@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+class SectionHeader extends StatelessWidget {
+  final String title;
+  final Widget? trailing;
+
+  const SectionHeader({
+    super.key,
+    required this.title,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).colorScheme.primary,
+              letterSpacing: 0.5,
+            ),
+          ),
+          if (trailing != null) ...[
+            const Spacer(),
+            trailing!,
+          ],
+        ],
+      ),
+    );
+  }
+}
